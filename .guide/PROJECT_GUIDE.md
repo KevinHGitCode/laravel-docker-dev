@@ -81,7 +81,7 @@ docker-compose run --rm composer <comando>
 </details>
 
 ### Base de Datos (MySQL)
-- Puerto expuesto: `3306`
+- Puerto expuesto en el host: `3308` (mapeado al puerto `3306` dentro del contenedor)
 - Persistencia: Directorio `mysql_data/`
 - Acceso a través de PHPMyAdmin: `http://localhost:8090`
 
