@@ -37,6 +37,56 @@ rm -rf /tmp/laravel-repo
 
 Consejo: evita clonar el proyecto dentro de `src` si ya tienes contenido importante; respalda antes.
 
+### ¿Por qué aparece el "fatal: destination path 'src' already exists"?
+
+Git no permite clonar en un directorio que ya contiene archivos. Si intentas `git clone <url> src` y `src/` ya existe (incluso con un `.gitkeep`), verás ese error. Abajo tienes opciones seguras según lo que quieras lograr.
+
+Opciones seguras cuando `src/` ya existe
+
+1) Reemplazar el contenido (sin conservar historial) — método seguro si no te importa perder lo que haya en `src`:
+
+```bash
+# clonar en temporal y sincronizar (mantén .git fuera)
+git clone <URL-del-repo-laravel> /tmp/laravel-repo
+rsync -av --delete --exclude='.git' /tmp/laravel-repo/ ./src/
+rm -rf /tmp/laravel-repo
+```
+
+2) Mantener `src` como repositorio Git y ponerlo a la misma versión remota
+
+Si `src` ya es un repo git y quieres sincronizarlo con el remoto:
+
+```bash
+cd src
+# añadir remoto si no existe
+git remote add origin <URL-del-repo-laravel> || true
+git fetch origin
+# reemplaza el contenido por la rama remota (ADVERTENCIA: esto descarta cambios locales)
+git reset --hard origin/main  # o origin/master según el repo remoto
+```
+
+3) Convertir una carpeta con archivos en un working copy del repo remoto (mantener archivos locales y mezclar)
+
+```bash
+cd src
+git init
+git remote add origin <URL-del-repo-laravel>
+git fetch origin
+# crea una rama local que rastree la rama remota
+git checkout -b main origin/main
+# ahora puedes mezclar, resolver conflictos y commitear
+```
+
+4) Hacer una copia de seguridad y volver a clonar (más simple si quieres preservar lo actual)
+
+```bash
+mv src src.backup
+git clone <URL-del-repo-laravel> src
+# revisa y mezcla archivos desde src.backup si hace falta
+```
+
+Elige la opción que se adapte a tu caso. Si no estás seguro, la opción 1 (rsync desde temporal) es la más segura para evitar errores y conservar una copia de seguridad separada.
+
 ### 2) Instalar dependencias PHP (Composer)
 
 Opción recomendada (usar el contenedor `composer` incluido):
