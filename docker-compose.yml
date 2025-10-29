@@ -89,6 +89,7 @@ services:
     environment:
       - HOST=0.0.0.0
       - CHOKIDAR_USEPOLLING=true
-    command: ["sh", "-c", "npm install && npm run dev"]
+    working_dir: /var/www/html
+    entrypoint: ["npm"]
     networks:
       - laravel_network
