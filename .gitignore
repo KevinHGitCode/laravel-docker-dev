@@ -7,6 +7,4 @@ src/*
 !src/.gitkeep
 
 # Otros archivos que no deberían subirse al repositorio
-.env
-.env.backup
 *.log

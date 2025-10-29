@@ -84,5 +84,11 @@ services:
     volumes:
       - ./src:/var/www/html
     container_name: laravel_node
+    ports:
+      - "5173:5173"
+    environment:
+      - HOST=0.0.0.0
+      - CHOKIDAR_USEPOLLING=true
+    command: ["sh", "-c", "npm install && npm run dev"]
     networks:
       - laravel_network
