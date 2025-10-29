@@ -1,0 +1,12 @@
+# Ignorar todos los archivos en mysql_data excepto .gitkeep
+mysql_data/*
+!mysql_data/.gitkeep
+
+# Ignorar todos los archivos en src excepto .gitkeep
+src/*
+!src/.gitkeep
+
+# Otros archivos que no deberían subirse al repositorio
+.env
+.env.backup
+*.log
