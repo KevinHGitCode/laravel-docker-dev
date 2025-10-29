@@ -66,7 +66,8 @@ if [ -f "src/package.json" ]; then
     echo -e "${BLUE}¿Deseas instalar las dependencias de Node.js? [y/N]${NC}"
     read -r response
     if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]; then
-        docker compose run --rm node npm install
+        # Override el comando por defecto del contenedor
+        docker compose run --rm --entrypoint npm node install
         echo -e "✓ Dependencias Node.js instaladas"
     else
         echo -e "Instalación de dependencias Node.js omitida"
