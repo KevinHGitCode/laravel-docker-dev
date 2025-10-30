@@ -35,12 +35,12 @@ graph TD
 
 Para iniciar el entorno completo:
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 Para detener y eliminar los contenedores:
 ```bash
-docker-compose down
+docker compose down
 ```
 
 ### Servidor Web (NGINX)
@@ -51,32 +51,32 @@ docker-compose down
 ### PHP y Laravel
 Ejecutar comandos de artisan:
 ```bash
-docker-compose run --rm artisan <comando>
+docker compose run --rm artisan <comando>
 ```
 
 <details>
 <summary style="color: #4a5568">Comandos comunes de Artisan</summary>
 
-- Crear un controlador: `docker-compose run --rm artisan make:controller NombreController`
-- Ejecutar migraciones: `docker-compose run --rm artisan migrate`
-- Limpiar caché: `docker-compose run --rm artisan cache:clear`
-- Generar key: `docker-compose run --rm artisan key:generate`
+- Crear un controlador: `docker compose run --rm artisan make:controller NombreController`
+- Ejecutar migraciones: `docker compose run --rm artisan migrate`
+- Limpiar caché: `docker compose run --rm artisan cache:clear`
+- Generar key: `docker compose run --rm artisan key:generate`
 
 </details>
 
 ### Composer
 Gestión de dependencias PHP:
 ```bash
-docker-compose run --rm composer <comando>
+docker compose run --rm composer <comando>
 ```
 
 <details>
 <summary style="color: #805ad5">Operaciones frecuentes con Composer</summary>
 
-- Instalar dependencias: `docker-compose run --rm composer install`
-- Actualizar dependencias: `docker-compose run --rm composer update`
-- Agregar paquete: `docker-compose run --rm composer require vendor/package`
-- Autoload: `docker-compose run --rm composer dump-autoload`
+- Instalar dependencias: `docker compose run --rm composer install`
+- Actualizar dependencias: `docker compose run --rm composer update`
+- Agregar paquete: `docker compose run --rm composer require vendor/package`
+- Autoload: `docker compose run --rm composer dump-autoload`
 
 </details>
 
@@ -89,7 +89,7 @@ docker-compose run --rm composer <comando>
 <summary style="color: #dd6b20">Acceso directo a MySQL</summary>
 
 ```bash
-docker-compose exec mysql mysql -u root -p
+docker compose exec mysql mysql -u root -p
 ```
 Las credenciales se configuran en `mysql/.env`
 
@@ -98,16 +98,16 @@ Las credenciales se configuran en `mysql/.env`
 ### Node.js y NPM
 Gestión de assets y dependencias frontend:
 ```bash
-docker-compose run --rm node <comando>
+docker compose run --rm node <comando>
 ```
 
 <details>
 <summary style="color: #68A063">Comandos para desarrollo frontend</summary>
 
-- Instalar dependencias: `docker-compose run --rm node install`
-- Desarrollo con hot-reload: `docker-compose run --rm node run dev`
-- Compilar para producción: `docker-compose run --rm node run build`
-- Vigilar cambios: `docker-compose run --rm node run watch`
+- Instalar dependencias: `docker compose run --rm node install`
+- Desarrollo con hot-reload: `docker compose run --rm node run dev`
+- Compilar para producción: `docker compose run --rm node run build`
+- Vigilar cambios: `docker compose run --rm node run watch`
 
 </details>
 
@@ -130,4 +130,4 @@ docker-compose run --rm node <comando>
 
 ## Personalización
 
-El entorno puede ser extendido modificando los Dockerfiles en el directorio `dockerfiles/` o ajustando la configuración en `docker-compose.yml`. Cada servicio está modularizado para facilitar su personalización sin afectar al resto del sistema.
+El entorno puede ser extendido modificando los Dockerfiles en el directorio `dockerfiles/` o ajustando la configuración en `docker compose.yml`. Cada servicio está modularizado para facilitar su personalización sin afectar al resto del sistema.
