@@ -91,7 +91,7 @@ docker compose run --rm composer <comando>
 ```bash
 docker compose exec mysql mysql -u root -p
 ```
-Las credenciales se configuran en `mysql/.env`
+Las credenciales se configuran en `mysql/.env` (no se versiona: créalo con `cp mysql/.env.example mysql/.env`)
 
 </details>
 

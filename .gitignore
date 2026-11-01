@@ -8,3 +8,5 @@ src/*
 
 # Otros archivos que no deberían subirse al repositorio
 *.log
+# Credenciales locales: copia mysql/.env.example a mysql/.env
+mysql/.env
